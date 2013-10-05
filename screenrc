@@ -1,0 +1,59 @@
+#
+# ~/.screenrc
+#
+defshell /bin/bash
+# not show welcome message
+startup_message off
+# define Ctrl-Z
+escape z
+# screen buffer
+defscrollback 52400
+## show status
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %c:%s "
+hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %C%a "
+#close error prompt
+vbell off
+# Ctrl-Z w or Ctrl-Z Ctrl-W to show windows list
+bind w windowlist -b
+bind ^w windowlist -b
+
+# clear the scrollback buffer when exiting full screen program like vim
+altscreen on
+
+# Shift+0 through 9 to select windows 10 through 19
+bind  ! select 11
+bind  @ select 12
+bind \# select 13
+bind  $ select 14
+bind  % select 15
+bind \^ select 16
+bind  & select 17
+bind  * select 18
+bind  ( select 19
+bind  ) select 10
+
+# Open screen windows
+chdir /etc
+screen -t etc       1
+
+chdir /opt
+screen -t opt       2
+
+chdir ~/
+screen -t home      0
+
+# PREVIOUS WINDOW
+# Ctrl + Alt + Left from gnome-terminal
+bindkey ^[[1;7C prev
+
+# Ctrl+Alt+Left from putty
+bindkey ^[^[[D prev
+
+# NEXT WINDOW
+# Ctrl + Alt + Right from gnome-terminal
+bindkey ^[[1;7D next
+
+# Ctrl+Alt+Right from putty
+bindkey ^[^[[C next
